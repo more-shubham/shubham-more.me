@@ -20,6 +20,10 @@ hero:
   images:
     - src: /shubham_headshot.png
       alt: Shubham More Profile Photo
+    - src: /shubham_photo_2.jpg
+      alt: Shubham More Photo 2
+    - src: /shubham_photo_3.jpg
+      alt: Shubham More Photo 3
 about:
   title: "Engineering Mindset & Systems Architecture"
   description: |
