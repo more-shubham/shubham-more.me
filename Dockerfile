@@ -1,4 +1,4 @@
-# Multi-stage build for Nuxt 3 Static Portfolio
+# Multi-stage build for Nuxt 3 Static Portfolio using `serve`
 FROM node:22-alpine AS builder
 
 WORKDIR /app
@@ -19,16 +19,19 @@ RUN pnpm install --frozen-lockfile --ignore-scripts
 # Generate production static bundle
 RUN pnpm build
 
-# Production runner: Nginx Alpine
-FROM nginx:1.27-alpine AS runner
+# Production runner: Lightweight Node Alpine with `serve`
+FROM node:22-alpine AS runner
 
-# Copy custom Nginx configuration to disable absolute_redirect and enable try_files
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+WORKDIR /app
+
+# Install lightweight static file server `serve`
+RUN npm install -g serve
 
 # Copy generated static assets from Nitro output
-COPY --from=builder /app/.output/public /usr/share/nginx/html
+COPY --from=builder /app/.output/public ./public
 
-# Expose default HTTP port
-EXPOSE 80
+# Expose port 3000
+EXPOSE 3000
 
-CMD ["nginx", "-g", "daemon off;"]
+# Serve static files with single-page app fallback (-s) on port 3000
+CMD ["serve", "-s", "public", "-l", "3000"]
