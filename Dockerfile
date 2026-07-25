@@ -1,4 +1,4 @@
-# Multi-stage build for Nuxt 3 Static Portfolio using `serve`
+# Multi-stage build for Nuxt 3 Static Portfolio using ultra-lightweight Caddy (~45MB)
 FROM node:22-alpine AS builder
 
 WORKDIR /app
@@ -19,19 +19,13 @@ RUN pnpm install --frozen-lockfile --ignore-scripts
 # Generate production static bundle
 RUN pnpm build
 
-# Production runner: Lightweight Node Alpine with `serve`
-FROM node:22-alpine AS runner
+# Stage 2: Ultra-lightweight Caddy 2 Alpine runner (~45MB total image)
+FROM caddy:2-alpine AS runner
 
-WORKDIR /app
+# Copy generated static assets from Nitro output to Caddy html root
+COPY --from=builder /app/.output/public /usr/share/caddy
 
-# Install lightweight static file server `serve`
-RUN npm install -g serve
-
-# Copy generated static assets from Nitro output
-COPY --from=builder /app/.output/public ./public
-
-# Expose port 3000
 EXPOSE 3000
 
-# Serve static files with single-page app fallback (-s) on port 3000
-CMD ["serve", "-s", "public", "-l", "3000"]
+# Serve static files with SPA fallback natively on port 3000 (Zero config files needed)
+CMD ["caddy", "file-server", "--listen", ":3000", "--root", "/usr/share/caddy", "--try-files", "{path}", "{path}/", "/index.html"]
