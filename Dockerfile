@@ -7,10 +7,10 @@ ENV CI=true
 # Enable pnpm via corepack
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copy package manifests only for optimal layer caching
+# Copy package manifests
 COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies (cached unless package.json/pnpm-lock.yaml changes)
+# Install dependencies
 RUN pnpm install --frozen-lockfile --ignore-scripts
 
 # Stage 2: Application Builder
@@ -30,7 +30,7 @@ COPY . .
 # Generate static production bundle
 RUN pnpm build
 
-# Stage 3: Ultra-lightweight Caddy 2 Alpine runner (~45MB total image)
+# Stage 3: Ultra-lightweight Caddy 2 Alpine runner (~45MB)
 FROM caddy:2-alpine AS runner
 
 # Copy generated static assets from Nitro output to Caddy html root
@@ -38,5 +38,5 @@ COPY --from=builder /app/.output/public /usr/share/caddy
 
 EXPOSE 3000
 
-# Serve static files with SPA fallback natively on port 3000
-CMD ["caddy", "file-server", "--listen", ":3000", "--root", "/usr/share/caddy", "--try-files", "{path}", "{path}/", "/index.html"]
+# Serve static files on port 3000
+CMD ["caddy", "file-server", "--listen", ":3000", "--root", "/usr/share/caddy"]
