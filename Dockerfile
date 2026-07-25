@@ -22,6 +22,9 @@ RUN pnpm build
 # Production runner: Nginx Alpine
 FROM nginx:1.27-alpine AS runner
 
+# Copy custom Nginx configuration to disable absolute_redirect and enable try_files
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Copy generated static assets from Nitro output
 COPY --from=builder /app/.output/public /usr/share/nginx/html
 
