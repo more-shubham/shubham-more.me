@@ -1,0 +1,6 @@
+title: go-mail — Transactional Email Abstraction Module
+description: Modular, zero-dependency Go package providing a unified email abstraction layer supporting SMTP, AWS SES v2, and Oracle OCI. Designed for high reliability, zero vendor lock-in, and unit-tested CI delivery.
+image: https://raw.githubusercontent.com/more-shubham/mail/main/assets/banner.png
+url: https://github.com/more-shubham/mail
+tags: ["Go (Golang)", "System Design", "AWS SES", "OCI", "Open Source"]
+date: "2026"

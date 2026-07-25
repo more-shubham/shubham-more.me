@@ -1,0 +1,64 @@
+seo:
+  title: "Shubham More - Senior Software Engineer & System Architect"
+  description: "Portfolio of Shubham More, Senior Software Engineer & System Architect specializing in Go, Node.js, Python, TypeScript, Distributed Systems, and Agentic AI."
+title: "Hey, I'm Shubham More — Senior Software Engineer & System Architect"
+description: "Architecting high-performance distributed systems, fault-tolerant microservices, and deterministic Agentic AI workflows in Go, Node.js, Python, and TypeScript."
+hero:
+  links:
+    - label: "View GitHub"
+      to: https://github.com/more-shubham
+      color: "neutral"
+      icon: "i-simple-icons-github"
+    - label: "LinkedIn Profile"
+      to: https://www.linkedin.com/in/shubhammore-dev/
+      color: "primary"
+      icon: "i-simple-icons-linkedin"
+    - label: "Email Me"
+      to: mailto:hi@shubham-more.me
+      color: "neutral"
+      icon: "i-lucide-mail"
+  images:
+    - src: /shubham_headshot.png
+      alt: Shubham More Profile Photo
+about:
+  title: "Engineering Mindset & Systems Architecture"
+  description: |
+    Senior Software Engineer and System Architect with expertise in building resilient backend platforms, optimizing database engines, and building agentic AI automation systems.
+    Experienced in Go microservices, Node.js, Python, PostgreSQL MVCC optimization, Redis caching, and cloud infrastructure.
+experience:
+  title: Professional Experience
+  items:
+    - position: "Senior Software Engineer / Full Stack Engineer at"
+      date: "2023 - Present"
+      company:
+        name: Irys Group
+        logo: "i-lucide-server"
+        url: "#"
+        color: "#10B981"
+    - position: "Full Stack Developer at"
+      date: "2022 - 2023"
+      company:
+        name: SR Analytics
+        logo: "i-lucide-cpu"
+        url: "#"
+        color: "#3B82F6"
+blog:
+  title: "Technical Writing & Architecture Notes"
+  description: "Insights on Go concurrency, PostgreSQL performance tuning, and Agentic AI systems."
+faq:
+  title: Frequently Asked Questions
+  description: Answers to common technical questions about my work and engagements.
+  categories:
+    - title: Technical Architecture & Stack
+      questions:
+        - label: What are your primary core technologies?
+          content: |
+            I specialize in Go (Golang), Node.js, Python, TypeScript, PostgreSQL, MongoDB, Redis, and Cloud Infrastructure (AWS / OCI). I focus heavily on low-level system design, fault tolerance, and clean domain-driven microservices.
+        - label: What is your experience with Agentic AI?
+          content: |
+            I architect deterministic Agentic AI workflows using Python, LangChain, LangGraph state machines, RAG pipelines, and function calling to build resilient automation agents.
+    - title: Engagement & Opportunities
+      questions:
+        - label: Are you available for remote Senior/Staff Architect roles?
+          content: |
+            Yes, I am available for full-time Senior Software Engineer, Staff Engineer, or System Architect roles worldwide.
