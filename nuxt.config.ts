@@ -14,6 +14,17 @@ export default defineNuxtConfig({
     enabled: true
   },
 
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://shubham-more.me'
+        }
+      ]
+    }
+  },
+
   css: ['~/assets/css/main.css'],
 
   content: {
@@ -22,15 +33,25 @@ export default defineNuxtConfig({
     }
   },
 
+  runtimeConfig: {
+    public: {
+      siteUrl: 'https://shubham-more.me',
+      siteName: 'Shubham More'
+    }
+  },
+
   compatibilityDate: '2026-06-30',
 
   nitro: {
     prerender: {
       routes: [
-        '/'
+        '/',
+        '/about',
+        '/projects'
       ],
       crawlLinks: true
-    }
+    },
+    static: true
   },
 
   eslint: {

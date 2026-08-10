@@ -18,7 +18,7 @@ content: |
   - **Data-Driven Performance:** Experienced in optimizing query execution, caching strategies (Redis), and asynchronous task queues to eliminate backend bottlenecks.
   - **Open Source:** Active author and maintainer of production-grade open-source packages like `go-mail`.
 images:
-  - src: /shubham_photo_2.jpg
+  - src: /images/shubham_photo_2.webp
     alt: Shubham More Photo 2
-  - src: /shubham_photo_3.jpg
+  - src: /images/shubham_photo_3.webp
     alt: Shubham More Photo 3

@@ -1,8 +1,8 @@
 export default defineAppConfig({
   global: {
     picture: {
-      dark: '/shubham_headshot.png',
-      light: '/shubham_headshot.png',
+      dark: '/images/shubham_headshot.webp',
+      light: '/images/shubham_headshot.webp',
       alt: 'Shubham More Profile Picture'
     },
     meetingLink: 'https://shubham-more.me',
