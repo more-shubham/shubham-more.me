@@ -33,11 +33,10 @@ defineProps<{
           delay: 0.1
         }"
       >
-        <UColorModeAvatar
-          class="size-18 ring ring-default ring-offset-3 ring-offset-bg"
-          :light="global.picture?.light!"
-          :dark="global.picture?.dark!"
-          :alt="global.picture?.alt!"
+        <img
+          :src="global.picture?.dark || global.picture?.light"
+          :alt="global.picture?.alt"
+          class="size-18 rounded-full object-cover ring ring-default ring-offset-3 ring-offset-bg"
         />
       </Motion>
     </template>
@@ -178,12 +177,13 @@ defineProps<{
           delay: index * 0.1
         }"
       >
-        <NuxtImg
+        <img
           width="234"
           height="234"
           class="rounded-lg aspect-square object-cover"
           :class="index % 2 === 0 ? '-rotate-2' : 'rotate-2'"
-          v-bind="img"
+          :src="img.src"
+          :alt="img.alt"
         />
       </Motion>
     </UMarquee>

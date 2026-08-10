@@ -6,6 +6,9 @@ set -e
 BUCKET="${AWS_S3_BUCKET:-shubham-more.me}"
 REGION="${AWS_REGION:-us-east-1}"
 
+# Clean build caches
+rm -rf .nuxt .output .data
+
 # 1. Parallel Nuxt static generation
 export NITRO_PRERENDER_CONCURRENCY=128
 export NODE_OPTIONS="--max-old-space-size=4096"
