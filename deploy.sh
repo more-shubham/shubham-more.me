@@ -5,6 +5,7 @@ set -e
 [ -f .env.aws ] && export $(cat .env.aws | grep -v '^#' | xargs)
 BUCKET="${AWS_S3_BUCKET:-shubham-more.me}"
 REGION="${AWS_REGION:-us-east-1}"
+DISTRIBUTION_ID="${AWS_CLOUDFRONT_DISTRIBUTION_ID:-EB83P2U2OC7XA}"
 
 # Clean build caches
 rm -rf .nuxt .output .data
@@ -25,4 +26,10 @@ aws s3 sync .output/public "s3://$BUCKET" \
   --delete \
   --region "$REGION"
 
-echo "✓ High-performance sync complete: s3://$BUCKET"
+# 4. Invalidate CloudFront CDN edge cache
+if [ -n "$DISTRIBUTION_ID" ]; then
+  echo "⚡ Invalidating CloudFront CDN cache..."
+  aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/*"
+fi
+
+echo "✓ High-performance sync & CDN invalidation complete: s3://$BUCKET"
