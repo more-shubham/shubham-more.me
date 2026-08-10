@@ -5,7 +5,7 @@ export default defineAppConfig({
       light: '/images/shubham_headshot.webp',
       alt: 'Shubham More Profile Picture'
     },
-    meetingLink: 'https://shubham-more.me',
+    meetingLink: 'https://www.linkedin.com/messaging/thread/new?recipient=shubhammore-dev',
     email: 'hi@shubham-more.me',
     available: true
   },

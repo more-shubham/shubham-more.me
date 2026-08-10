@@ -49,6 +49,7 @@ defineOgImage('Portfolio', { title, description })
           <UButton
             :label="page.links[0]?.label"
             :to="global.meetingLink"
+            target="_blank"
             v-bind="page.links[0]"
           />
           <UButton
