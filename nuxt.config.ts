@@ -7,8 +7,27 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-og-image',
-    'motion-v/nuxt'
+    'motion-v/nuxt',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots'
   ],
+
+  site: {
+    url: 'https://shubham-more.me',
+    name: 'Shubham More'
+  },
+
+  sitemap: {
+    sources: [
+      '/api/__sitemap__/urls'
+    ]
+  },
+
+  robots: {
+    userAgent: '*',
+    allow: '/',
+    sitemap: 'https://shubham-more.me/sitemap.xml'
+  },
 
   devtools: {
     enabled: true
