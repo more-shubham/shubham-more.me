@@ -1,62 +1,100 @@
-# Nuxt Portfolio Template
+# 🚀 Shubham More - Personal Portfolio & Blog
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+A high-performance personal portfolio, projects showcase, and blog built with **Nuxt 4**, **Nuxt UI**, and **Nuxt Content**, hosted on high-throughput **AWS Serverless Infrastructure** (Amazon S3 + AWS CloudFront CDN + API Gateway / Lambda support).
 
-Use this template to create your own portfolio with [Nuxt UI](https://ui.nuxt.com).
+---
 
-- [Live demo](https://portfolio-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
+## 🏗️ System Architecture
 
-<a href="https://portfolio-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/portfolio-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png">
-    <img alt="Nuxt Portfolio Template" src="https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png">
-  </picture>
-</a>
+### AWS Architecture Diagram
 
-## Quick Start
+```mermaid
+flowchart LR
+    User["🌐 User / Browser"] --> CloudFront["⚡ Amazon CloudFront\n(Global CDN Cache)"]
+    CloudFront -->|Origin Fetch| S3["📦 Amazon S3\n(Static Assets Bucket)"]
 
-```bash [Terminal]
-npm create nuxt@latest -- -t ui/portfolio
+    subgraph Deployment Pipeline
+        Dev["💻 Local / CI"] -->|1. pnpm generate| Build[".output/public"]
+        Build -->|2. aws s3 sync| S3
+        Build -->|3. aws cloudfront create-invalidation| CloudFront
+    end
 ```
 
-## Deploy your own
+---
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=portfolio&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fportfolio&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fportfolio-dark.png&demo-url=https%3A%2F%2Fportfolio-template.nuxt.dev%2F&demo-title=Nuxt%20Portfolio%20Template&demo-description=A%20sleek%20portfolio%20template%20to%20showcase%20your%20work%2C%20skills%20and%20blog%20powered%20by%20Nuxt%20Content.)
+## 🛠️ Infrastructure & Tech Stack
 
-## Setup
+### Frontend Stack
+* **Framework**: [Nuxt 4](https://nuxt.com/) (Vue 3, Static Site Generation via Nitro)
+* **UI Components**: [Nuxt UI 3/4](https://ui.nuxt.com/) & [Tailwind CSS 4](https://tailwindcss.com/)
+* **Content Engine**: [@nuxt/content v3](https://content.nuxt.com/)
 
-Make sure to install the dependencies:
+### AWS Infrastructure
+* **Amazon S3**: Static website hosting & asset storage.
+* **Amazon CloudFront**: Global CDN delivering cached static assets with edge invalidation support.
+
+---
+
+## ⚙️ Automated Deployment (`deploy.sh`)
+
+The project uses a high-concurrency, optimized deployment shell script [`deploy.sh`](file:///Users/shubham/Developer/shubham-more.me/deploy.sh):
+
+1. **Static Generation**: Runs `pnpm generate` using Nitro with `NITRO_PRERENDER_CONCURRENCY=128`.
+2. **AWS CLI Optimization**: Sets AWS S3 client parameters for maximum throughput (`max_concurrent_requests=128`, `max_queue_size=50000`).
+3. **S3 Differential Sync**: Syncs generated `.output/public` files directly to `s3://$AWS_S3_BUCKET` with `--delete`.
+4. **CDN Cache Invalidation**: Triggers an AWS CloudFront invalidation for path `/*` so updates propagate globally instantly.
+
+---
+
+## 🛠️ Quick Start & Local Development
+
+### Environment Setup
+
+Copy `.env.aws.example` to `.env.aws` and fill in your AWS credentials & infrastructure variables:
 
 ```bash
+cp .env.aws.example .env.aws
+```
+
+Configuration parameters:
+
+```ini
+AWS_REGION=us-east-1
+AWS_ACCOUNT_ID=123456789012
+AWS_S3_BUCKET=your-s3-bucket-name
+AWS_CLOUDFRONT_DISTRIBUTION_ID=E1234567890ABC
+AWS_API_GATEWAY_ID=your_api_gateway_id
+AWS_API_GATEWAY_ENDPOINT=https://your-api-gateway.execute-api.us-east-1.amazonaws.com/prod
+```
+
+### Development
+
+```bash
+# Install dependencies
 pnpm install
-```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
+# Start local dev server (http://localhost:3000)
 pnpm dev
+
+# Type check & Lint
+pnpm typecheck
+pnpm lint
 ```
 
-## Production
-
-Build the application for production:
+### Production Build & AWS Deployment
 
 ```bash
+# Build & preview locally
 pnpm build
-```
-
-Locally preview production build:
-
-```bash
 pnpm preview
+
+# Generate static site & deploy directly to AWS (S3 + CloudFront Invalidation)
+pnpm deploy
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
 
-## Renovate integration
+## 📜 License
 
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+[MIT](file:///Users/shubham/Developer/shubham-more.me/LICENSE) © [Shubham More](https://shubham-more.me)
+
