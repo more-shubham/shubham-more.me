@@ -1,0 +1,6 @@
+title: Personal Portfolio & Engineering Website
+description: Modern, high-performance static portfolio built with Nuxt 4, Vue 3, Nuxt UI, and Tailwind CSS. Deployed on AWS S3 & CloudFront with automated edge cache invalidation.
+image: /images/projects/shubham-more-portfolio.webp
+url: https://github.com/more-shubham/shubham-more.me
+tags: ["Nuxt 4", "Vue.js", "TypeScript", "Tailwind CSS", "AWS S3", "CloudFront"]
+date: "2026"

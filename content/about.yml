@@ -1,0 +1,27 @@
+seo:
+  title: "About Me — Shubham More"
+  description: "Senior Software Engineer & System Architect based in Pune, India. Architecting scalable distributed systems, high-throughput microservices, and resilient full-stack platforms."
+title: "About Me"
+description: "Senior Software Engineer & System Architect based in Pune, India. Architecting scalable distributed systems, high-throughput microservices, and resilient full-stack platforms."
+content: |
+  Hi, I'm **Shubham More**, a Senior Software Engineer & System Architect based in Pune, India.
+
+  I specialize in architecting scalable distributed systems, high-throughput microservices, and resilient cloud-native platforms. My core stack centers on **Go (Golang)**, **Node.js**, **Python**, **TypeScript**, and **cloud-native database architectures** with an emphasis on performance, fault tolerance, and clean domain-driven design.
+
+  ### 🏗️ Production Architecture & Stack
+
+  - **Backend & Microservices:** Go (Golang) · Node.js · Express.js · Python · TypeScript
+  - **Data & Storage Architecture:** PostgreSQL (MVCC Optimization) · MongoDB · Redis Caching
+  - **Cloud Infrastructure & DevOps:** AWS · Docker · Microservices · REST APIs
+  - **Agentic AI & Automation:** LangChain · LangGraph State Machines · Deterministic RAG Pipelines
+
+  ### ⚙️ Engineering Principles
+
+  - **Pragmatic Architecture:** I select tools based on explicit system requirements, data throughput, and long-term maintainability.
+  - **Data-Driven Performance:** Experienced in optimizing query execution, caching strategies (Redis), and asynchronous task queues to eliminate backend bottlenecks.
+  - **Open Source:** Active author and maintainer of production-grade open-source packages like `go-mail`.
+images:
+  - src: /images/shubham_photo_2.webp
+    alt: Shubham More Photo 2
+  - src: /images/shubham_photo_3.webp
+    alt: Shubham More Photo 3
