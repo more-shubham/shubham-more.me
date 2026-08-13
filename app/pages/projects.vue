@@ -28,8 +28,13 @@ useSeoMeta({
   ogDescription: description,
   ogUrl: `${siteUrl}/projects`,
   ogType: 'website',
+  ogSiteName: 'Shubham More',
+  ogLocale: 'en_US',
   twitterTitle: title,
   twitterDescription: description,
+  twitterSite: '@_MoreShubham',
+  twitterCreator: '@_MoreShubham',
+  robots: 'index, follow',
   keywords: 'Shubham More Projects, Software Projects, Open Source, Web Applications, Go Mail, Agentic AI, Distributed Systems'
 })
 

@@ -24,8 +24,13 @@ useSeoMeta({
   ogDescription: description,
   ogUrl: `${siteUrl}/`,
   ogType: 'website',
+  ogSiteName: 'Shubham More',
+  ogLocale: 'en_US',
   twitterTitle: title,
   twitterDescription: description,
+  twitterSite: '@_MoreShubham',
+  twitterCreator: '@_MoreShubham',
+  robots: 'index, follow',
   keywords: 'Shubham More, Software Engineer, System Architect, Golang, Node.js, Python, TypeScript, Nuxt.js, Next.js, PostgreSQL, MongoDB, AWS, Azure'
 })
 
@@ -43,6 +48,14 @@ const srAnalyticsOrg = {
   '@type': 'Organization',
   'name': 'SR Analytics',
   'url': 'https://sranalytics.io/'
+}
+
+const personImage = {
+  '@type': 'ImageObject',
+  'url': `${siteUrl}/images/shubham_headshot.webp`,
+  'contentUrl': `${siteUrl}/images/shubham_headshot.webp`,
+  'width': 1122,
+  'height': 1402
 }
 
 useHead({
@@ -71,6 +84,7 @@ useHead({
             '@id': `${siteUrl}/#person`,
             'name': 'Shubham More',
             'url': siteUrl,
+            'image': personImage,
             'email': global?.email,
             'jobTitle': 'Senior Software Engineer & System Architect',
             'sameAs': socialUrls,
@@ -95,6 +109,8 @@ useHead({
     }
   ]
 })
+
+defineOgImage('Portfolio', { title, description })
 </script>
 
 <template>

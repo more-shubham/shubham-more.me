@@ -24,8 +24,13 @@ useSeoMeta({
   ogDescription: description,
   ogUrl: `${siteUrl}/about`,
   ogType: 'profile',
+  ogSiteName: 'Shubham More',
+  ogLocale: 'en_US',
   twitterTitle: title,
   twitterDescription: description,
+  twitterSite: '@_MoreShubham',
+  twitterCreator: '@_MoreShubham',
+  robots: 'index, follow',
   keywords: 'Shubham More, Senior Software Engineer, System Architect, Golang, Node.js, Python, TypeScript, Nuxt.js, Next.js, PostgreSQL, MongoDB, AWS, Azure'
 })
 
@@ -45,6 +50,14 @@ const srAnalyticsOrg = {
   'url': 'https://sranalytics.io/'
 }
 
+const personImage = {
+  '@type': 'ImageObject',
+  'url': `${siteUrl}/images/shubham_headshot.webp`,
+  'contentUrl': `${siteUrl}/images/shubham_headshot.webp`,
+  'width': 1122,
+  'height': 1402
+}
+
 useHead({
   link: [
     { rel: 'canonical', href: `${siteUrl}/about` }
@@ -59,6 +72,7 @@ useHead({
           '@type': 'Person',
           'name': 'Shubham More',
           'url': siteUrl,
+          'image': personImage,
           'email': global?.email,
           'jobTitle': 'Senior Software Engineer & System Architect',
           'sameAs': socialUrls,
